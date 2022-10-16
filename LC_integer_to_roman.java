@@ -1,0 +1,65 @@
+class Solution {
+    public String intToRoman(int num) {
+        int r,i;
+        StringBuilder ans=new StringBuilder();
+        if(num>=1000){
+            r=num/1000;
+            for(i=1;i<=r;i++)
+                ans.append("M");
+            num=num%1000;
+        }
+        if(num>=900){
+            ans.append("CM");
+            num=num%900;
+        }
+        if(num>=500){
+            r=num/500;
+            for(i=1;i<=r;i++)
+                ans.append("D");
+            num=num%500;
+        }
+        if(num>=400){
+            ans.append("CD");
+            num=num%400;
+        }
+        if(num>=100){
+            r=num/100;
+            for(i=1;i<=r;i++)
+                ans.append("C");
+            num=num%100;
+        }
+        if(num>=90){
+            ans.append("XC");
+            num=num%90;
+        }
+        if(num>=50){
+            ans.append("L");
+            num=num%50;
+        }
+        if(num>=40){
+            ans.append("XL");
+            num=num%40;
+        }
+        if(num>=10){
+            r=num/10;
+            for(i=1;i<=r;i++)
+                ans.append("X");
+            num=num%10;
+        }
+        if(num>=9){
+            ans.append("IX");
+            num=num%9;
+        }
+        if(num>=5){
+            ans.append("V");
+            num=num%5;
+        }
+        if(num>=4){
+            ans.append("IV");
+            num=num%4;
+        }
+        for(i=1;i<=num;i++)
+            ans.append("I");
+        return ans.toString();
+    }
+}
