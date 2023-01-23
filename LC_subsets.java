@@ -1,15 +1,17 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> l=new ArrayList<List<Integer>>();
-		l.add(new ArrayList<Integer>());
-		for(int i=0;i<nums.length;i++){
-		    int n=l.size();
-		    for(int j=0;j<n;j++){
-		        List<Integer> l2=new ArrayList<>(l.get(j));
-		        l2.add(nums[i]);
-		        l.add(l2);
-		    }
-		}
+		harsh(nums,new ArrayList<>(),0);
         return l;
+    }
+    List<List<Integer>> l=new ArrayList<List<Integer>>();
+    public void harsh(int nums[],List<Integer> al,int i){
+        if(i==nums.length){
+            l.add(new ArrayList<>(al));
+            return;
+        }
+        harsh(nums,al,i+1);
+        al.add(nums[i]);
+        harsh(nums,al,i+1);
+        al.remove(al.size()-1);
     }
 }
